@@ -1,0 +1,19 @@
+
+[
+    {
+        "uniqueId": "c91d19f4-fb1d-4d20-9de0-927c053ead52",
+        "dateCreated": "05/30/2024 11:48:24",
+        "thumbnailUrl": "https://c4cneu-public.s3.us-east-2.amazonaws.com/Site/sfft-project-page.png",
+        "name": "Speak For The Trees",
+        "description": "Speak for the Trees Boston aims to improve the size and health of the urban forest in the greater Boston area, with a focus on under-served and under-canopied neighborhoods. They work with volunteers to inventory (collect data) trees, plant trees, and educate those about trees. C4C has built a tree stewardship application for SFTT that allows users to participate in conserving Boston's urban forest. Across Boston, hundreds of trees have been adopted and cared for."
+      
+    },
+    {
+        "uniqueId": "1fa6a3d6-b4ec-487f-bd0b-104e834a50c4",
+        "dateCreated": "05/30/2024 11:50:12",
+        "thumbnailUrl": "https://c4cneu-public.s3.us-east-2.amazonaws.com/Site/LLB_2019_rgb.png",
+        "name": "Lucy's Love Bus - Practitioner Network",
+        "description": "Lucy’s Love Bus improves quality of life for children with cancer or other life-threatening illnesses with integrative therapies like massage, meditation, acupuncture, music therapy, and therapeutic horseback riding. Integrative therapies ease children’s pain and anxiety during and after traditional medical treatments. We are building an open search directory to allow families across New England to find integrative therapists in their area."
+      
+    }
+  ]

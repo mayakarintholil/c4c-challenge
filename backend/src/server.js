@@ -1,7 +1,15 @@
 import express from 'express';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
 
 const app = express();
 const port = 4000;
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+ 
 
 // Some partner data
 const partners = {
@@ -33,9 +41,13 @@ app.use((req, res, next) => {
   APPLICATION ROUTES
 */
 
+
 app.get('/', (req, res) => {
-  res.status(200).send(partners);
-})
+  const filePath = path.join(__dirname, 'c4c_partners.json');
+  const data = fs.readFileSync(filePath, 'utf8');
+  const partners = JSON.parse(data);
+  res.status(200).json(partners);
+}); 
 
 // Start the backend
 app.listen(port, () => {

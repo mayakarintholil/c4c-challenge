@@ -1,5 +1,6 @@
 import './App.css'
 import Dashboard from './components/Dashboard'
+import PartnerTile from './components/PartnerTile'
 
 function App() {
   return (
