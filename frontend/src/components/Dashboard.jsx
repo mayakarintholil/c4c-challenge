@@ -21,12 +21,31 @@ function Dashboard() {
 
 
   let partnersArray = Object.values(partners); 
+
+
+  const deletePartner = (partnerId) => {
+    fetch(`http://localhost:4000/` + partnerId, {
+      method: 'DELETE',
+    })
+    .then((res) => {
+      if(res.ok) {
+        setPartners(partnersArray.filter(partner => partner.id !== partnerId));
+        console.log('got here! ' + partnerId);
+
+        //reload page automatically 
+        window.location.reload();
+      } else {
+        console.error('Failed to delete partner'); 
+      }
+    })
+  };
+  
   
   return (
     <div id="main-content">
       <div id="main-partners-grid">
         {partnersArray.map((partner, index) => (
-          <PartnerTile key={index} partnerData={partner} />
+          <PartnerTile key={index} partnerData={partner} deletePartner={ deletePartner }/>
         ))}
       </div>
     </div>

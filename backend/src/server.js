@@ -41,13 +41,35 @@ app.use((req, res, next) => {
   APPLICATION ROUTES
 */
 
-
+//API endpoint GET 
 app.get('/', (req, res) => {
   const filePath = path.join(__dirname, 'c4c_partners.json');
   const data = fs.readFileSync(filePath, 'utf8');
   const partners = JSON.parse(data);
   res.status(200).json(partners);
 }); 
+
+
+//API endpoint - DELETE 
+app.delete('/:uniqueId', (req, res) => {
+
+  //extract id from url path 
+  const id = req.params.uniqueId; 
+  console.log(`Deleting partner with ID: ${id}`);
+  const filePath = path.join(__dirname, 'c4c_partners.json');
+  const data = fs.readFileSync(filePath, 'utf8');
+  let partners = JSON.parse(data);
+
+  //use filter on partners to filter out partner with matching guid
+  const updatedPartners = partners.filter(partner => partner.uniqueId !== id);
+  console.log('Partners after deletion:', updatedPartners);
+
+  // Write the updated partners array back to the JSON file
+  fs.writeFileSync(filePath, JSON.stringify(updatedPartners, null, 2), 'utf8');
+
+  res.sendStatus(200);
+
+})
 
 // Start the backend
 app.listen(port, () => {

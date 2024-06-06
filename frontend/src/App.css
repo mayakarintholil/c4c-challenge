@@ -32,7 +32,7 @@ h1.title {
 
 .partner-tile {
   width: 450px;
-  height: 400px;
+  height: 500px;
 
   display: flex;
   flex-direction: column;
@@ -42,13 +42,26 @@ h1.title {
   border: 1px solid #3d3d3d;
   border-radius: 12px;
 
-  padding: 25px;
+  padding: 20px;
 }
 
 .partner-thumbnail {
   max-width: 330px;
   max-height: 150px;
 }
+
+.partner-status {
+  font-size: 0.9em; 
+}
+
+.active {
+  color: rgb(50,205,50); 
+}
+
+.inactive {
+  color: red; 
+}
+
 
 .partner-info {
   font-size: 0.9em;
