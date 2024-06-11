@@ -9,16 +9,8 @@ const port = 4000;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
- 
+const filePath = path.join(__dirname, 'c4c_partners.json');
 
-// Some partner data
-const partners = {
-  "sftt": {
-    "thumbnailUrl": "https://c4cneu-public.s3.us-east-2.amazonaws.com/Site/sfft-project-page.png",
-    "name": "Speak For The Trees",
-    "description": "Speak for the Trees Boston aims to improve the size and health of the urban forest in the greater Boston area, with a focus on under-served and under-canopied neighborhoods. They work with volunteers to inventory (collect data) trees, plant trees, and educate those about trees. C4C has built a tree stewardship application for SFTT that allows users to participate in conserving Boston's urban forest. Across Boston, hundreds of trees have been adopted and cared for.",
-  }
-}
 
 /* 
   APPLICATION MIDDLEWARE
@@ -41,35 +33,63 @@ app.use((req, res, next) => {
   APPLICATION ROUTES
 */
 
-//API endpoint GET 
+
+//read partners from JSON 
+const readPartners = () => {
+  const partnerData = fs.readFileSync(filePath, 'utf8');
+  return JSON.parse(partnerData);
+};
+
+//write partners to JSON 
+const writePartners = (partners) => {
+  fs.writeFileSync(filePath, JSON.stringify(partners, null, 2), 'utf8');
+};
+
+
+//API endpoint GET to retrieve partner data 
 app.get('/', (req, res) => {
-  const filePath = path.join(__dirname, 'c4c_partners.json');
-  const data = fs.readFileSync(filePath, 'utf8');
-  const partners = JSON.parse(data);
-  res.status(200).json(partners);
+  try {
+    const currentPartners = readPartners(); 
+    res.status(200).json(currentPartners);
+  } catch (error) {
+    res.status(500).json({ message: 'Could not read partners from file', error });
+  }
 }); 
 
 
-//API endpoint - DELETE 
+//API endpoint - DELETE to remove an existing partner 
 app.delete('/:uniqueId', (req, res) => {
 
   //extract id from url path 
   const id = req.params.uniqueId; 
   console.log(`Deleting partner with ID: ${id}`);
-  const filePath = path.join(__dirname, 'c4c_partners.json');
-  const data = fs.readFileSync(filePath, 'utf8');
-  let partners = JSON.parse(data);
+  
+  let partners = readPartners();
 
-  //use filter on partners to filter out partner with matching guid
+  //filtering out partner with matching guid
   const updatedPartners = partners.filter(partner => partner.uniqueId !== id);
   console.log('Partners after deletion:', updatedPartners);
 
   // Write the updated partners array back to the JSON file
-  fs.writeFileSync(filePath, JSON.stringify(updatedPartners, null, 2), 'utf8');
+  writePartners(updatedPartners);
 
   res.sendStatus(200);
 
 })
+
+//API endpoint - POST to add a partner 
+app.post('/', (req, res) => {
+  const newPartner = req.body; 
+  try {
+    const partners = readPartners();
+    partners.push(newPartner);
+    writePartners(partners);
+    res.status(201).json(newPartner);
+  } catch (error) {
+    res.status(500).json({ message: 'Could not add new partner', error });
+  }
+});
+
 
 // Start the backend
 app.listen(port, () => {

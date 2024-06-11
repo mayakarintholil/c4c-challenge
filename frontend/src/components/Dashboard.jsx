@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import PartnerTile from './PartnerTile';
+import NewPartner from './NewPartner';
+
 
 /*
   The top-level component containing everything relevant to the dashboard,
@@ -16,7 +18,7 @@ function Dashboard() {
     })
     .then((res) => res.json())
     .then((data) => { setPartners(data); })
-    .catch((error) => console.error('Error fetching partners:', error));
+    .catch((error) => console.error('Could not fetch partners', error));
   }, [])
 
 
@@ -35,14 +37,31 @@ function Dashboard() {
         //reload page automatically 
         window.location.reload();
       } else {
-        console.error('Failed to delete partner'); 
+        console.error('Could not delete partner'); 
       }
     })
   };
   
+
+  const addPartner = (partner) => {
+    fetch('http://localhost:4000', {
+      method: 'POST', 
+      headers: {
+        //specifying request body as JSON
+        'Content-Type': 'application/json'
+      }, 
+      //Convert JS object to JSON string
+      body: JSON.stringify(partner)
+    })
+    .then((res) => res.json())  // Parses the response from the server as JSON
+    .then((addedPartner) => {
+    setPartners((prevPartners) => [...prevPartners, addedPartner]);  
+  })
+  };
   
   return (
     <div id="main-content">
+      <NewPartner handleNewPartner={addPartner} />
       <div id="main-partners-grid">
         {partnersArray.map((partner, index) => (
           <PartnerTile key={index} partnerData={partner} deletePartner={ deletePartner }/>
