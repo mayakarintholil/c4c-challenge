@@ -122,6 +122,11 @@ h1.title {
   padding: 4px; 
 }
 
+.form-input input {
+  margin-left: 10px;
+}
+
+
 .form-input label {
   font-weight: bold;
   margin-right: 20px;
@@ -143,4 +148,29 @@ h1.title {
   border-color: green;
   color: white; 
   transition: 0.3s;
+}
+
+/* Search Bar*/
+
+.search-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  flex-direction: column;
+  padding-left: 300px;
+  margin-right: 300px;
+
+}
+
+.search-container label {
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.search-container input {
+  width: 200px; 
+  padding: 8px; 
+  border-radius: 10px;
 }

@@ -1,16 +1,15 @@
 import './App.css'
-import Dashboard from './components/Dashboard'
-import PartnerTile from './components/PartnerTile'
+import Dashboard from './components/Dashboard';
 
 function App() {
   return (
     <>
       <h1 className="title">
-        C4C: Projects
+        C4C: Partners
       </h1>
       <Dashboard />
     </>
   )
 }
 
-export default App
+export default App;

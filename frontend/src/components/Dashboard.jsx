@@ -11,6 +11,8 @@ function Dashboard() {
 
   const [partners, setPartners] = useState([]);
 
+  const [searchTerm, setSearchTerm] = useState(''); 
+
   // Load all partners on initial page load 
   useEffect(() => {
     fetch('http://localhost:4000', {
@@ -57,13 +59,24 @@ function Dashboard() {
     .then((addedPartner) => {
     setPartners((prevPartners) => [...prevPartners, addedPartner]);  
   })
+  .catch((error) => console.error('Could not add this partner', error));
+
   };
-  
+
+  const filteredPartners = partnersArray.filter((partner) =>
+     partner.name.toLowerCase().includes(searchTerm.toLowerCase())); 
+
+  //onChange -> when input changes update setSearchTerm
+
   return (
     <div id="main-content">
       <NewPartner handleNewPartner={addPartner} />
       <div id="main-partners-grid">
-        {partnersArray.map((partner, index) => (
+        <div className='search-container'>
+          <label htmlFor="searchbar">Search for a Partner</label>
+          <input type='text' name='searchbar' placeholder='Enter a partner name...' value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)}/> 
+        </div>
+        {filteredPartners.map((partner, index) => (
           <PartnerTile key={index} partnerData={partner} deletePartner={ deletePartner }/>
         ))}
       </div>
