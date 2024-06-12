@@ -45,13 +45,19 @@ h1.title {
   padding: 20px;
 }
 
+.partner-tile:hover {
+  border-color:rgb(112, 41, 99); 
+  background-color: rgb(230,230,250); 
+  transition: 0.8s; 
+}
+
 .partner-thumbnail {
   max-width: 330px;
   max-height: 150px;
 }
 
 .partner-status {
-  font-size: 0.9em; 
+  font-size: 1.0em; 
 }
 
 .active {
@@ -62,7 +68,79 @@ h1.title {
   color: red; 
 }
 
-
 .partner-info {
   font-size: 0.9em;
+}
+
+.date-container {
+  color: grey; 
+  font-size: 0.7em; 
+}
+
+.button {
+  font-size: 0.9em; 
+  background-color: rgb(112, 41, 99); 
+  color: white;
+  border-color: rgb(48, 25, 52);
+  border-radius: 5px; /* round-up edges */
+
+}
+
+.button:hover {
+  background-color:red;
+  border-color: rgb(139, 0, 0);
+  color: white; 
+  transition: 0.5s;
+}
+
+
+/* New Partner */
+.form-container {
+  width: 400px;
+  height: 350px;
+  border: 1px solid #3d3d3d;
+  border-radius: 10px;
+  padding: 15px;
+
+  text-align: center;
+  margin-left: 260px;
+  margin-bottom: 20px; 
+  align-items: center; 
+
+}
+
+.form-container h3 {
+  font-size: 18pt; 
+}
+
+.form-input {
+  margin-bottom: 15px;
+  margin-left: 5px; 
+  display: flex;
+  flex-direction:row;
+  font-size: 0.9em;
+  padding: 4px; 
+}
+
+.form-input label {
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.submit-button {
+
+  height: 30px; 
+  font-size: 1.0em; 
+  background-color: rgb(112, 41, 99); 
+  color: white;
+  border-color: rgb(48, 25, 52);
+  border-radius: 5px; /* round-up edges */
+  
+}
+
+.submit-button:hover {
+  background-color:green;
+  border-color: green;
+  color: white; 
+  transition: 0.3s;
 }

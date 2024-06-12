@@ -16,7 +16,7 @@ function PartnerTile({ partnerData , deletePartner }) { //partnerData represents
  const status = partnerData.status; 
  const id = partnerData.uniqueId; 
  
- //to dynamically set color of status for each partner 
+ //dynamically set color of status for each partner 
  let isActive; 
  if (status === 'Active') {
   isActive = 'active'; 
@@ -38,7 +38,10 @@ function PartnerTile({ partnerData , deletePartner }) { //partnerData represents
           <h4>{ status }</h4>
         </div>
         <p>{ description }</p>
-        <button id={partnerData.id} onClick={handleDelete} style={{ backgroundColor: 'red', color: 'white' }}>Delete</button>
+        <div className='date-container'>
+          <p>Date Added: { partnerData.dateCreated }</p>
+        </div>
+        <button className='button' id={partnerData.id} onClick={handleDelete} >Delete</button>
       </div> 
     </div>
   )

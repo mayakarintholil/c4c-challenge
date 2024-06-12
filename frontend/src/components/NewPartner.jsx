@@ -7,7 +7,7 @@ import PartnerTile from './PartnerTile';
 function NewPartner({ handleNewPartner }) {
     const[newPartnerData, setNewPartner] = useState({
         //to initialize state with empty string for each field
-        status: '', 
+        status: 'Not Active', 
         thumbnailUrl: '', 
         name: '', 
         description: ''
@@ -17,22 +17,27 @@ function NewPartner({ handleNewPartner }) {
 
     //when input changes, update the state of field with new value
     const addInfo = (event) => {
-        const { name, value } = event.target;
-        setNewPartner({ ...newPartnerData, [name]: value });
+        const { name, value ,type, checked} = event.target;
+        setNewPartner({ ...newPartnerData, [name]: type === 'checkbox' ? (checked ? 'Active' : 'Not Active') : value 
+    });
       };
 
+
+    const formatDate = (date) => {
+        return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+    };
 
     //called when submit is clicked 
     const submitForm = (event) => {
         event.preventDefault();
         const newPartner = {
-            ...newPartnerData,
             uniqueId: uuid(),
-            dateCreated: new Date()
+            dateCreated: formatDate(new Date()),
+            ...newPartnerData
           };
           handleNewPartner(newPartner);
           setNewPartner({
-            status: '',
+            status: 'Not Active',
             thumbnailUrl: '',
             name: '',
             description: ''
@@ -42,41 +47,56 @@ function NewPartner({ handleNewPartner }) {
       console.log(newPartnerData.dateCreated); 
 
       return (
+        <div className='form-container'>
+    
+         <h3>Add a Partner!</h3>
+
         <form onSubmit={submitForm}>
-          <input
+        <div className='form-input'>
+        <label for="status"> Active? </label>
+        <input
             type="checkbox"
             name="status"
-            value={newPartnerData.status}
             onChange={addInfo}
+            checked={newPartnerData.status === 'Active'}
             placeholder="Status"
-            required
           />
-          <label for="status"> Active? </label>
+          </div>
+          <div className='form-input'>
+          <label for="thumbnailUrl"> Partner Logo Source: </label>
           <input
             type="text"
             name="thumbnailUrl"
             value={newPartnerData.thumbnailUrl}
             onChange={addInfo}
-            placeholder="Thumbnail URL"
+            placeholder="Insert thumbnail URL"
             required
           />
+
+          </div>
+          <div className='form-input'>
+          <label for="name"> Partner Name: </label>
           <input
             type="text"
             name="name"
             value={newPartnerData.name}
             onChange={addInfo}
-            placeholder="Name"
+            placeholder="Insert name here"
             required
           />
+          </div>
+          <div className='form-input'> 
+          <label for="description"> Partner Description: </label>
           <textarea
             name="description"
             value={newPartnerData.description}
             onChange={addInfo}
-            placeholder="Description"
             required
           ></textarea>
-          <button type="submit">Submit</button>
+          </div>
+          <button className='submit-button' type="submit">Submit</button>
         </form>
+        </div>
       );
  }
 

@@ -16,17 +16,27 @@
     "description": "Lucy’s Love Bus improves quality of life for children with cancer or other life-threatening illnesses with integrative therapies like massage, meditation, acupuncture, music therapy, and therapeutic horseback riding. Integrative therapies ease children’s pain and anxiety during and after traditional medical treatments. We are building an open search directory to allow families across New England to find integrative therapists in their area."
   },
   {
+    "uniqueId": "e4c714b1-09e1-4e9f-a2c6-1f079e735b2c",
+    "dateCreated": "06/04/2024 08:43:39",
     "status": "Active",
     "thumbnailUrl": "https://c4cneu-public.s3.us-east-2.amazonaws.com/Site/JPAL_logo.svg",
     "name": "J-PAL - Letter of Recommendation System",
     "description": "The Abdul Latif Jameel Poverty Action Lab (J-PAL) is a global research center working to reduce poverty by ensuring that policy is informed by scientific evidence. J-PAL works with the New York City Department of Youth and Community Development, which runs the country's largest summer youth employment program, to evaluate the impact of recommendation letters on participants’ educational and employment outcomes after the program. C4C is building a system that simplifies the creation, dissemination and completion of surveys that will be used to create unique letters of recommendation for each youth. Each youth will be sent their unique letter(s) of recommendation, which we hope will improve their educational and employment opportunities."
   },
   {
-    "status": "",
+    "uniqueId": "c1101e8a-ee4d-4c0b-89a0-7f993b4e2f83",
+    "dateCreated": "6/11/2024 16:2:43",
+    "status": "Active",
+    "thumbnailUrl": "https://images.squarespace-cdn.com/content/v1/5afe1b373e2d09d58a8b7629/1548818988674-PNHSLS67AF1SRNW6JAX4/LOGO_TSWGO_1.png?format=1500w",
+    "name": "This Star Won't Go Out",
+    "description": "Since its founding in 2011, TSWGO has helped hundreds of families, with gifts totaling over $450,000 to help families suffering from financial hardship related to childhood cancer. We're helping to streamline this system so that TSWGO can focus their attention on helping families."
+  },
+  {
+    "uniqueId": "1203a9f5-394c-450d-81c2-6e396fccb506",
+    "dateCreated": "6/11/2024 16:6:16",
+    "status": "Not Active",
     "thumbnailUrl": "https://www.cambridgema.gov/~/media/Images/sharedimages/cityseal/cityseal?mw=1920",
     "name": "City of Cambridge",
-    "description": "After the success of the Speak for the Trees project, the City of Cambridge reached out for a similar project. We are developing an interactive tree map for all of Cambridge, empowering citizens to become steward of Cambridge's mighty urban forest.\n\n",
-    "uniqueId": "4bcbe4ee-16f1-4214-be82-1034a45b04be",
-    "dateCreated": "2024-06-11T14:36:17.159Z"
+    "description": "After the success of the Speak for the Trees project, the City of Cambridge reached out for a similar project. We are developing an interactive tree map for all of Cambridge, empowering citizens to become steward of Cambridge's mighty urban forest.\n\n"
   }
 ]
