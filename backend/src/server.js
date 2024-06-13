@@ -33,14 +33,13 @@ app.use((req, res, next) => {
   APPLICATION ROUTES
 */
 
-
-//read partners from JSON 
+//helper to read partners from JSON 
 const readPartners = () => {
   const partnerData = fs.readFileSync(filePath, 'utf8');
   return JSON.parse(partnerData);
 };
 
-//write partners to JSON 
+//helper to write partners to JSON 
 const writePartners = (partners) => {
   fs.writeFileSync(filePath, JSON.stringify(partners, null, 2), 'utf8');
 };
@@ -59,20 +58,15 @@ app.get('/', (req, res) => {
 
 //API endpoint - DELETE to remove an existing partner 
 app.delete('/:uniqueId', (req, res) => {
-
   //extract id from url path 
   const id = req.params.uniqueId; 
   console.log(`Deleting partner with ID: ${id}`);
-  
   let partners = readPartners();
-
   //filtering out partner with matching guid
   const updatedPartners = partners.filter(partner => partner.uniqueId !== id);
   console.log('Partners after deletion:', updatedPartners);
-
   // Write the updated partners array back to the JSON file
   writePartners(updatedPartners);
-
   res.sendStatus(200);
 
 })

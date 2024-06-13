@@ -20,13 +20,13 @@ function Dashboard() {
     })
     .then((res) => res.json())
     .then((data) => { setPartners(data); })
-    .catch((error) => console.error('Could not fetch partners', error));
+    .catch((error) => console.error('Could not fetch partners!', error));
   }, [])
 
 
   let partnersArray = Object.values(partners); 
 
-
+  //Delete partner using it's associated id
   const deletePartner = (partnerId) => {
     fetch(`http://localhost:4000/` + partnerId, {
       method: 'DELETE',
@@ -39,7 +39,7 @@ function Dashboard() {
         //reload page automatically 
         window.location.reload();
       } else {
-        console.error('Could not delete partner'); 
+        console.error('Could not delete partner!'); 
       }
     })
   };
@@ -55,11 +55,11 @@ function Dashboard() {
       //Convert JS object to JSON string
       body: JSON.stringify(partner)
     })
-    .then((res) => res.json())  // Parses the response from the server as JSON
+    .then((res) => res.json())  
     .then((addedPartner) => {
     setPartners((prevPartners) => [...prevPartners, addedPartner]);  
   })
-  .catch((error) => console.error('Could not add this partner', error));
+  .catch((error) => console.error('Could not add this partner!', error));
 
   };
 
